@@ -47,10 +47,6 @@ table {
 	border-spacing: 0;
 }
 /* Generated */
-.App {
-  text-align: center;
-}
-
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
@@ -81,10 +77,25 @@ table {
   }
 }
 /* My CSS */
-
+/* Basic */
 h2 {
   font-size: 2rem;
 }
+h3{
+  font-family: 'proxima-nova', sans-serif;
+}
+strong{
+  font-weight: bold;
+  font-family: 'proxima-nova', sans-serif;
+}
+p{
+  font-family: 'proxima-nova', sans-serif;
+}
+/* Classes */
+.App {
+  padding: 20px;
+}
+
 .searchContainer {
   max-width: 100%;
   width: 100%;
@@ -95,7 +106,6 @@ h2 {
   border-bottom: 1px solid lightgrey;
 
 }
-
 .searchLogo {
   display: flex;
   flex-flow: row nowrap;
@@ -117,7 +127,6 @@ h2 {
   width: 200px;
   border-radius: 4px;
 }
-
 .searchIcons {
   display: flex;
   flex-flow: row nowrap;
@@ -127,4 +136,39 @@ h2 {
 }
 .searchIcons i {
   font-size: 1.5rem;
+}
+
+.postContainer {
+  padding-top: 5px;
+  border: 1px lightgrey solid;
+  width: 640px;
+  border-bottom: 1px silid lightgrey;
+}
+.top {
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+}
+.top img {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+}
+.top strong {
+  padding-left: 10px;
+}
+.icons {
+  font-size: 1.5rem;
+}
+.icons i {
+  padding: 5px;
+}
+.bottom {
+  padding-bottom: 10px;
+}
+.comments {
+  padding-bottom: 10px;
+}
+.timestamp {
+  color: grey;
 }
