@@ -1,37 +1,74 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import CommentContainer from '../CommentSection/CommentContainer'
+import React, {Component} from 'react';
+import CommentSection from '../CommentSection/CommentSection'
 
-const PostContainer = props => {
-    return props.postcontainer.map(post => (
-        <div class="postContainer">
-            <div class="top">
-                <img src={post.thumbnailUrl} alt="random shit"/>
-                <strong>{post.username}</strong>
-            </div>
-            <div class="middle">
-                <img src={post.imageUrl} alt="random shit"/>
-            </div>
-            <div class="bottom">
-                <div class="icons">
-                <i class="far fa-heart"></i>
-                <i class="far fa-comment"></i>
-                </div>
-                <strong>{post.likes} likes</strong>
-            </div>
-            {post.comments.map(comment => (
-                <CommentContainer commentsection={comment} key={comment.id}/>
-            ))}
-            <p class="timestamp">{ post.timestamp }</p>
+class PostContainer extends Component {
+   
+    render() { 
+        return ( 
+            <div className="post-container">
+                {this.props.f.length === 0 ? this.props.data.map(post => {
+                    return (
+                        <>
+
+                        <header style={headerStyle}>
+                            <img style={ profileImg } src={post.thumbnailUrl} alt="thumbnail"/>
+                            <strong>{post.username}</strong>
+                        </header>
+
+                        <img src={post.imageUrl} alt={post.id}/>
+
+                        <section className="likebar">
+                            <strong>{post.likes} likes</strong>
+                        </section>
+
+                        <CommentSection 
+                            comments={post.comments}
+                            timestamp={post.timestamp}
+                        />
+
+                        </>
+                    )
+                }) : this.props.f.map(post => {
+                    return (
+                        <>
+
+                        <header>
+                            <img src={post.thumbnailUrl} alt="thumbnail"/>
+                            <h3>{post.username}</h3>
+                        </header>
+
+                        <img src={post.imageUrl} alt={post.id}/>
+
+                        <section className="likebar">
+                            {post.likes} likes
+                        </section>
+
+                        <CommentSection 
+                            comments={post.comments}
+                            timestamp={post.timestamp}
+                        />
+
+                        </>
+                    ) }
+                )
+                }
         </div>
-        
-    ));
-};
+    )
+}
+}
 
-PostContainer.propTypes = {
-    username: PropTypes.string,
-    likes: PropTypes.number,
-    thumbnailUrl: PropTypes.string
-};
+const headerStyle = {
+  display: 'flex',
+  flexFlow: 'row nowrap',
+  alignItems: 'center'
+}
 
+const profileImg = {
+    borderRadius: '50%',
+    height: '35px',
+    width: '35px',
+    padding: '10px'
+}
+
+ 
 export default PostContainer;

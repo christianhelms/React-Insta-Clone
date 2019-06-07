@@ -1,14 +1,28 @@
-import React from 'react';
 
-function SearchBar() {
-    return (
-        <div class="searchBar">
-            <input
-                placeholder="Search"
-                name="search"
+import React, {Component} from 'react';
+
+class SearchBar extends Component {
+    constructor(props) {
+        super(props);
+    }
+    render() { 
+        return (
+            <input style={searchStyle}
+                onChange={this.props.s}
+                placeholder="search..."
+                type="text"
+                // value={this.props.newSearch}
             />
-        </div>
-    );
+        );
+    }
 }
 
+const searchStyle = {
+    textAlign: 'center',
+    height: '20px',
+    width: '200px',
+    borderRadius: '4px'
+}
+
+ 
 export default SearchBar;

@@ -4,11 +4,11 @@ import SearchLogo from './SearchLogo'
 import SearchBar from './SearchBar'
 import SearchIcons from './SearchIcons'
 
-function SearchContainer() {
+function SearchContainer(props) {
     return (
         <div class="searchContainer">
            <SearchLogo />
-           <SearchBar />
+           <SearchBar s={props.s} />
            <SearchIcons />
         </div>
     );

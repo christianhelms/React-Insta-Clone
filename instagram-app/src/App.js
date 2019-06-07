@@ -1,34 +1,44 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import dummyData from '../src/dummy-data';
+import React from 'react';
 import SearchContainer from './compontents/SearchBar/SearchContainer'
 import PostContainer from './compontents/PostContainer/PostContainer'
-import CommentContainer from './compontents/CommentSection/CommentContainer'
+import dummyData from './dummy-data'
 
-export class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      data: [],
-    }
-  }
+import './App.css';
 
-  componentDidMount() {
+class App extends React.Component {
+  state = { 
+    data: [],
+    // search: '',
+    f: []
+  };
+
+  changeHandler = e => {
     this.setState({
-      data: dummyData,
-    });
+        [e.target.name]: e.target.value
+    })
   }
 
-  render(){
-    return (
-      //mapping over data, sending to post container via props
-      <div class="App">
-      <SearchContainer />
-      <PostContainer postcontainer={this.state.data}/>
-      </div>
-    );
+  componentDidMount(){
+    this.setState({data: dummyData})
+  }
+
+  s = e => {
+    const filtered = this.state.data.filter(post => post.username.toLowerCase().includes(e.target.value.toLowerCase()))
+    console.log(e);
+    this.setState({ f: filtered})
+  }
+
+  render() {
+    console.log('render',this.state.data);
+    return ( 
+      <div className="App">
+        <SearchContainer newSearch={this.state.search} s={this.s} />
+
+        <PostContainer data={this.state.data} f={this.state.f} />
+    </div>
+     );
+   
   }
 }
-
+ 
 export default App;
