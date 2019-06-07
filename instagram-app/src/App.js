@@ -1,44 +1,21 @@
-import React from 'react';
-import SearchContainer from './compontents/SearchBar/SearchContainer'
-import PostContainer from './compontents/PostContainer/PostContainer'
-import dummyData from './dummy-data'
-
+import React, { Component } from 'react';
 import './App.css';
+import PostsPage from './compontents/PostContainer/PostContainer';
+import Authenticate from './compontents/Authentication/Authentication';
 
-class App extends React.Component {
-  state = { 
-    data: [],
-    // search: '',
-    f: []
-  };
-
-  changeHandler = e => {
-    this.setState({
-        [e.target.name]: e.target.value
-    })
-  }
-
-  componentDidMount(){
-    this.setState({data: dummyData})
-  }
-
-  s = e => {
-    const filtered = this.state.data.filter(post => post.username.toLowerCase().includes(e.target.value.toLowerCase()))
-    console.log(e);
-    this.setState({ f: filtered})
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {};
   }
 
   render() {
-    console.log('render',this.state.data);
-    return ( 
+    return (
       <div className="App">
-        <SearchContainer newSearch={this.state.search} s={this.s} />
-
-        <PostContainer data={this.state.data} f={this.state.f} />
-    </div>
-     );
-   
+        <PostsPage />
+      </div>
+    );
   }
 }
- 
-export default App;
+
+export default Authenticate(App);
